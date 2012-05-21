@@ -39,10 +39,12 @@ public class EventsFragment extends ListFragment {
 	}
 	
 	public class LoaderTask extends AsyncTask<Void, Void, EventResult[]> {
+		private static final String BASE_URL = "http://www.agendatech.com.br/mobile";
+
 		protected EventResult[] doInBackground(Void... params) {
 			try {
 				
-				InputStream stream = new URL("http://www.agendatech.com.br/mobile/eventos").openStream();
+				InputStream stream = new URL(BASE_URL + "/eventos").openStream();
 				Reader jsonReader = new InputStreamReader(stream); 
 				return new GsonBuilder().create().fromJson(jsonReader, EventResult[].class);
 			} catch (IOException e) {
