@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <color name="theme_main_color">#0CBADF</color>
+
+    <style name="SplashTheme" parent="Theme.Sherlock.NoActionBar">
+        <item name="android:windowBackground">@color/theme_main_color</item>
+    </style>
+
+    <style name="ATTheme" parent="Theme.Sherlock.Light.DarkActionBar">
+        <item name="actionBarStyle">@style/Widget.Styled.ActionBar</item>
+        <item name="android:actionBarStyle">@style/Widget.Styled.ActionBar</item>
+    </style>
+
+    <style name="Widget.Styled.ActionBar" parent="Widget.Sherlock.Light.ActionBar.Solid.Inverse">
+        <item name="background">@color/theme_main_color</item>
+        <item name="android:background">@color/theme_main_color</item>
+        <item name="displayOptions">showHome|useLogo|showTitle</item>
+        <item name="android:displayOptions">showHome|useLogo|showTitle</item>
+        <item name="titleTextStyle">@style/TextAppearance.Widget.Styled.ActionBar.Title</item>
+        <item name="android:titleTextStyle">@style/TextAppearance.Widget.Styled.ActionBar.Title</item>
+    </style>
+    
+    <style name="TextAppearance.Widget.Styled.ActionBar.Title" parent="TextAppearance.Sherlock.Widget.ActionBar.Title.Inverse">
+        <item name="android:textStyle">bold</item>
+    </style>
+
+</resources>

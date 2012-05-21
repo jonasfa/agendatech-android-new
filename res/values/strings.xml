@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <string name="agendatech">Agendatech</string>
+    <string name="agenda">Agenda</string>
+    <string name="tech">tech</string>
+    
+    <string name="events">Eventos</string>
+    <string name="groups">Grupos</string>
+
+</resources>
