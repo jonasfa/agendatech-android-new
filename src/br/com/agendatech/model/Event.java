@@ -1,5 +1,9 @@
 package br.com.agendatech.model;
 
-public class Event {
+import java.io.Serializable;
+
+@SuppressWarnings("serial")
+public class Event implements Serializable {
 	public String nome;
+	public String descricao;
 }

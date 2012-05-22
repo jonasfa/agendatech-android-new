@@ -40,7 +40,7 @@ public class Main extends RoboSherlockFragmentActivity {
 	}
 
 	private void setUpViewPager() {
-		final Fragment[] fragments = new Fragment[] { new EventsFragment(this), new GroupsFragment(this) };
+		final Fragment[] fragments = new Fragment[] { new EventsFragment(), new GroupsFragment() };
 		viewPager.setAdapter(new FragmentPagerAdapter(getSupportFragmentManager()) {
 			public int getCount() {
 				return fragments.length;

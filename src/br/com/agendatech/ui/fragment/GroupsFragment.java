@@ -14,16 +14,12 @@ import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
 import br.com.agendatech.model.Group;
-import br.com.agendatech.ui.activity.Main;
 
 import com.google.gson.GsonBuilder;
 
 public class GroupsFragment extends ListFragment {
 
-	private Main activity;
-
-	public GroupsFragment(Main main) {
-		this.activity = main;
+	public GroupsFragment() {
 		tryToLoad();
 	}
 
@@ -55,9 +51,9 @@ public class GroupsFragment extends ListFragment {
 
 		protected void onPostExecute(GroupResult[] result) {
 			if (result != null) {
-				setListAdapter(new ArrayAdapter<GroupResult>(activity, android.R.layout.simple_list_item_1, android.R.id.text1, result));
+				setListAdapter(new ArrayAdapter<GroupResult>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, result));
 			} else {
-				new AlertDialog.Builder(activity).setMessage("Houve um erro de rede").setPositiveButton("Tentar novamente", new OnClickListener() {
+				new AlertDialog.Builder(getActivity()).setMessage("Houve um erro de rede").setPositiveButton("Tentar novamente", new OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						tryToLoad();
 					}

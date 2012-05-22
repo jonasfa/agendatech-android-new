@@ -9,21 +9,27 @@ import java.net.URL;
 import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
+import android.content.Intent;
 import android.os.AsyncTask;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
+import android.widget.ListView;
 import br.com.agendatech.model.Event;
-import br.com.agendatech.ui.activity.Main;
+import br.com.agendatech.ui.activity.EventDetails;
 
 import com.google.gson.GsonBuilder;
 
 public class EventsFragment extends ListFragment {
-	private Main activity;
 
-	public EventsFragment(Main main) {
-		this.activity = main;
+	public EventsFragment() {
 		tryToLoad();
+	}
+	
+	public void onListItemClick(ListView l, View v, int position, long id) {
+		Intent intent = new Intent(getActivity(), EventDetails.class);
+		intent.putExtra("event", ((EventResult)l.getItemAtPosition(position)).evento);
+		startActivity(intent);
 	}
 
 	private void tryToLoad() {
@@ -54,9 +60,9 @@ public class EventsFragment extends ListFragment {
 		
 		protected void onPostExecute(EventResult[] result) {
 			if (result != null) {
-				setListAdapter(new ArrayAdapter<EventResult>(activity, android.R.layout.simple_list_item_1, android.R.id.text1, result));
+				setListAdapter(new ArrayAdapter<EventResult>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, result));
 			} else {
-				new AlertDialog.Builder(activity).setMessage("Houve um erro de rede").setPositiveButton("Tentar novamente", new OnClickListener() {
+				new AlertDialog.Builder(getActivity()).setMessage("Houve um erro de rede").setPositiveButton("Tentar novamente", new OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						tryToLoad();
 					}

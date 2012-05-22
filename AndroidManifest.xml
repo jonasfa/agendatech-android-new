@@ -20,6 +20,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.activity.Main" android:theme="@style/ATTheme" />
+        <activity android:name=".ui.activity.EventDetails" android:theme="@style/ATTheme" />
     </application>
     
 
