@@ -6,4 +6,5 @@ import java.io.Serializable;
 public class Event implements Serializable {
 	public String nome;
 	public String descricao;
+	public Gadget[] gadgets;
 }

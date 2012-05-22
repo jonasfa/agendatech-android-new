@@ -9,5 +9,6 @@
     <string name="groups">Grupos</string>
     <string name="description">Descrição</string>
     <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin vehicula ante vitae dui pulvinar vestibulum. Cras semper neque sed dui placerat pellentesque. Fusce laoreet, turpis ac volutpat interdum, sapien massa convallis turpis, sit amet volutpat sem purus at metus. Pellentesque varius lorem eu leo feugiat laoreet.\n\nVestibulum ac eleifend erat. Cras varius, erat quis laoreet suscipit, justo massa ornare enim, pretium vulputate diam diam sed nisi. Praesent in pharetra nisl. Pellentesque quis odio mi. Curabitur scelerisque iaculis purus, vitae lobortis ipsum aliquam non. Nam at mauris nulla, sit amet iaculis nisi. In convallis sollicitudin erat mattis vestibulum.</string>
+    <string name="who_is_coming">Quem vai</string>
 
 </resources>
