@@ -39,6 +39,8 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		state.setText(event.estado);
 		date.setText(makeDateText(event.data, event.data_termino));
 		link.setText(event.site);
+		
+		loadLogo();
 
 		for (int i = 0; i < whoIsComing.getChildCount(); i++) {
 			ImageView child = (ImageView) whoIsComing.getChildAt(i);
@@ -49,8 +51,6 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 				child.setVisibility(View.GONE);
 			}
 		}
-
-		loadLogo();
 	}
 
 	private String makeDateText(Date start, Date end) {
