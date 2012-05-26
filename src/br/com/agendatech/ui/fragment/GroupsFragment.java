@@ -10,6 +10,7 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.DialogInterface.OnClickListener;
 import android.os.AsyncTask;
+import android.support.v4.app.FragmentActivity;
 import android.support.v4.app.ListFragment;
 import android.view.View;
 import android.widget.ArrayAdapter;
@@ -50,10 +51,15 @@ public class GroupsFragment extends ListFragment {
 		}
 
 		protected void onPostExecute(GroupResult[] result) {
+			FragmentActivity activity = getActivity();
+
+			if (activity == null)
+				return;
+
 			if (result != null) {
-				setListAdapter(new ArrayAdapter<GroupResult>(getActivity(), android.R.layout.simple_list_item_1, android.R.id.text1, result));
+				setListAdapter(new ArrayAdapter<GroupResult>(activity, android.R.layout.simple_list_item_1, android.R.id.text1, result));
 			} else {
-				new AlertDialog.Builder(getActivity()).setMessage("Houve um erro de rede").setPositiveButton("Tentar novamente", new OnClickListener() {
+				new AlertDialog.Builder(activity).setMessage("Houve um erro de rede").setPositiveButton("Tentar novamente", new OnClickListener() {
 					public void onClick(DialogInterface dialog, int which) {
 						tryToLoad();
 					}
