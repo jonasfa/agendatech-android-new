@@ -92,6 +92,8 @@
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
+            android:clipChildren="false"
+            android:clipToPadding="false"
             android:orientation="vertical"
             android:padding="8dp" >
 
@@ -99,6 +101,7 @@
                 android:id="@+id/who_is_coming"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:clipChildren="false"
                 android:weightSum="5" >
 
                 <include layout="@layout/who_is_coming_item" />

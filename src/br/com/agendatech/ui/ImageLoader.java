@@ -8,20 +8,15 @@ import android.os.AsyncTask;
 import android.widget.ImageView;
 import br.com.agendatech.BuildConfig;
 
+import com.actionbarsherlock.internal.nineoldandroids.animation.Animator;
+import com.actionbarsherlock.internal.nineoldandroids.animation.Animator.AnimatorListener;
 import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
 
 public class ImageLoader extends AsyncTask<Object, Void, Drawable> {
 	volatile ImageView logo;
-	private boolean animated;
 
-	public ImageLoader(ImageView logo, boolean animated) {
+	public ImageLoader(ImageView logo) {
 		this.logo = logo;
-		this.animated = animated;
-	}
-
-	protected void onPreExecute() {
-		if (this.animated)
-			this.logo.setRotationY(90);
 	}
 
 	protected Drawable doInBackground(Object... params) {
@@ -41,9 +36,21 @@ public class ImageLoader extends AsyncTask<Object, Void, Drawable> {
 		return null;
 	}
 
-	protected void onPostExecute(Drawable result) {
-		this.logo.setImageDrawable(result);
-		if (this.animated)
-			ObjectAnimator.ofFloat(this.logo, "rotationY", 0).start();
+	protected void onPostExecute(final Drawable result) {
+		ObjectAnimator firstAnimation = ObjectAnimator.ofFloat(this.logo, "rotationY", 90);
+		firstAnimation.addListener(new AnimatorListener() {
+			public void onAnimationStart(Animator animation) {}
+
+			public void onAnimationRepeat(Animator animation) {}
+
+			public void onAnimationEnd(Animator animation) {
+				logo.setImageDrawable(result);
+				logo.setRotationY(-90);
+				ObjectAnimator.ofFloat(logo, "rotationY", 0).start();
+			}
+
+			public void onAnimationCancel(Animator animation) {}
+		});
+		firstAnimation.start();
 	}
 }

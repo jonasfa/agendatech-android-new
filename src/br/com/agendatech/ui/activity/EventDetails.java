@@ -46,7 +46,7 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 			ImageView child = (ImageView) whoIsComing.getChildAt(i);
 
 			if (i < event.gadgets.length) {
-				new ImageLoader(child, false).execute("http://api.twitter.com/1/users/profile_image/" + event.gadgets[i].user.nickname + ".png");
+				new ImageLoader(child).execute("http://api.twitter.com/1/users/profile_image/" + event.gadgets[i].user.nickname + ".png");
 			} else {
 				child.setVisibility(View.GONE);
 			}
@@ -67,7 +67,7 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		if (event.logo_file_name == null) {
 			logo.setVisibility(View.GONE);
 		} else {
-			new ImageLoader(logo, true).execute("http://s3.amazonaws.com/agendatech_logos/original/" + event.logo_file_name);
+			new ImageLoader(logo).execute("http://s3.amazonaws.com/agendatech_logos/original/" + event.logo_file_name);
 		}
 	}
 
