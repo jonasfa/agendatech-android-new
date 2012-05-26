@@ -51,11 +51,37 @@
             android:layout_height="1dip"
             android:background="@color/theme_main_color" />
 
-        <GridView
-            android:id="@+id/who_is_coming"
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:numColumns="5" />
+            android:background="?android:selectableItemBackground"
+            android:clickable="true"
+            android:orientation="vertical"
+            android:padding="8dp" >
+
+            <LinearLayout
+                android:id="@+id/who_is_coming"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <include layout="@layout/who_is_coming_item" />
+
+                <include layout="@layout/who_is_coming_item" />
+
+                <include layout="@layout/who_is_coming_item" />
+
+                <include layout="@layout/who_is_coming_item" />
+
+                <include layout="@layout/who_is_coming_item" />
+            </LinearLayout>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="right"
+                android:layout_marginTop="4dp"
+                android:text="Ver todos >" />
+        </LinearLayout>
     </LinearLayout>
 
 </ScrollView>
