@@ -1,14 +1,11 @@
 package br.com.agendatech.ui.activity;
 
-import java.net.URL;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
-import android.graphics.drawable.Drawable;
-import android.os.AsyncTask;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
@@ -18,8 +15,8 @@ import android.widget.LinearLayout;
 import android.widget.TextView;
 import br.com.agendatech.R;
 import br.com.agendatech.model.Event;
+import br.com.agendatech.ui.ImageLoader;
 
-import com.actionbarsherlock.internal.nineoldandroids.animation.ObjectAnimator;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 
 @ContentView(value = R.layout.event_details)
@@ -43,6 +40,16 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		date.setText(makeDateText(event.data, event.data_termino));
 		link.setText(event.site);
 
+		for (int i = 0; i < whoIsComing.getChildCount(); i++) {
+			ImageView child = (ImageView) whoIsComing.getChildAt(i);
+
+			if (i < event.gadgets.length) {
+				new ImageLoader(child, false).execute("http://api.twitter.com/1/users/profile_image/" + event.gadgets[i].user.nickname + ".png");
+			} else {
+				child.setVisibility(View.GONE);
+			}
+		}
+
 		loadLogo();
 	}
 
@@ -60,38 +67,7 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		if (event.logo_file_name == null) {
 			logo.setVisibility(View.GONE);
 		} else {
-			new LogoLoader(logo).execute(event.logo_file_name);
-		}
-	}
-
-	private final static class LogoLoader extends AsyncTask<Object, Void, Drawable> {
-		volatile ImageView logo;
-
-		public LogoLoader(ImageView logo) {
-			this.logo = logo;
-		}
-
-		protected void onPreExecute() {
-			this.logo.setRotationY(90);
-		}
-
-		protected Drawable doInBackground(Object... params) {
-			String fileName = (String) params[0];
-
-			try {
-				if (fileName != null) {
-					URL url = new URL("http://s3.amazonaws.com/agendatech_logos/original/" + fileName);
-					return Drawable.createFromStream(url.openStream(), null);
-				}
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
-			return null;
-		}
-
-		protected void onPostExecute(Drawable result) {
-			this.logo.setImageDrawable(result);
-			ObjectAnimator.ofFloat(this.logo, "rotationY", 0).start();
+			new ImageLoader(logo, true).execute("http://s3.amazonaws.com/agendatech_logos/original/" + event.logo_file_name);
 		}
 	}
 
