@@ -74,54 +74,61 @@
             android:text="@string/lorem_ipsum"
             android:textAppearance="?android:textAppearanceMedium" />
 
-        <TextView
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:drawableBottom="@drawable/title_strip"
-            android:drawablePadding="6dp"
-            android:paddingLeft="8dp"
-            android:paddingRight="8dp"
-            android:text="@string/who_is_coming"
-            android:textAllCaps="true"
-            android:textAppearance="?android:textAppearanceSmall"
-            android:textColor="@color/theme_main_color"
-            android:textStyle="bold" />
-
         <LinearLayout
+            android:id="@+id/who_is_coming_group"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:background="?android:selectableItemBackground"
-            android:clickable="true"
-            android:onClick="showAttendants"
-            android:clipChildren="false"
-            android:clipToPadding="false"
-            android:orientation="vertical"
-            android:padding="8dp" >
-
-            <LinearLayout
-                android:id="@+id/who_is_coming"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:clipChildren="false"
-                android:weightSum="5" >
-
-                <include layout="@layout/who_is_coming_item" />
-
-                <include layout="@layout/who_is_coming_item" />
-
-                <include layout="@layout/who_is_coming_item" />
-
-                <include layout="@layout/who_is_coming_item" />
-
-                <include layout="@layout/who_is_coming_item" />
-            </LinearLayout>
+            android:orientation="vertical" >
 
             <TextView
-                android:layout_width="wrap_content"
+                android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_gravity="right"
-                android:layout_marginTop="4dp"
-                android:text="@string/more" />
+                android:drawableBottom="@drawable/title_strip"
+                android:drawablePadding="6dp"
+                android:paddingLeft="8dp"
+                android:paddingRight="8dp"
+                android:text="@string/who_is_coming"
+                android:textAllCaps="true"
+                android:textAppearance="?android:textAppearanceSmall"
+                android:textColor="@color/theme_main_color"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:background="?android:selectableItemBackground"
+                android:clickable="true"
+                android:clipChildren="false"
+                android:clipToPadding="false"
+                android:onClick="showAttendants"
+                android:orientation="vertical"
+                android:padding="8dp" >
+
+                <LinearLayout
+                    android:id="@+id/who_is_coming"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:clipChildren="false"
+                    android:weightSum="5" >
+
+                    <include layout="@layout/who_is_coming_item" />
+
+                    <include layout="@layout/who_is_coming_item" />
+
+                    <include layout="@layout/who_is_coming_item" />
+
+                    <include layout="@layout/who_is_coming_item" />
+
+                    <include layout="@layout/who_is_coming_item" />
+                </LinearLayout>
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="right"
+                    android:layout_marginTop="4dp"
+                    android:text="@string/more" />
+            </LinearLayout>
         </LinearLayout>
     </LinearLayout>
 

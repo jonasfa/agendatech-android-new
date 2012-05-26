@@ -31,6 +31,7 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 	@InjectView(value = R.id.state) TextView state;
 	@InjectView(value = R.id.link) TextView link;
 	@InjectView(value = R.id.who_is_coming) LinearLayout whoIsComing;
+	@InjectView(value = R.id.who_is_coming_group) View whoIsComingGroup;
 	@InjectView(value = R.id.logo) ImageView logo;
 
 	protected void onCreate(Bundle savedInstanceState) {
@@ -44,14 +45,21 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		link.setText(event.site);
 
 		loadLogo();
+		setUpWhoIsComing();
+	}
 
-		for (int i = 0; i < whoIsComing.getChildCount(); i++) {
-			ImageView child = (ImageView) whoIsComing.getChildAt(i);
+	private void setUpWhoIsComing() {
+		if (event.gadgets.length == 0) {
+			whoIsComingGroup.setVisibility(View.GONE);
+		} else {
+			for (int i = 0; i < whoIsComing.getChildCount(); i++) {
+				ImageView child = (ImageView) whoIsComing.getChildAt(i);
 
-			if (i < event.gadgets.length) {
-				new ImageLoader(child).execute("http://api.twitter.com/1/users/profile_image/" + event.gadgets[i].user.nickname + ".png");
-			} else {
-				child.setVisibility(View.GONE);
+				if (i < event.gadgets.length) {
+					new ImageLoader(child).execute("http://api.twitter.com/1/users/profile_image/" + event.gadgets[i].user.nickname + ".png");
+				} else {
+					child.setVisibility(View.GONE);
+				}
 			}
 		}
 	}
