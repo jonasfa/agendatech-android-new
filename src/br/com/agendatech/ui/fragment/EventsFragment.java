@@ -18,6 +18,7 @@ import android.widget.ListView;
 import br.com.agendatech.model.Event;
 import br.com.agendatech.ui.activity.EventDetails;
 
+import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 
 public class EventsFragment extends ListFragment {
@@ -52,7 +53,8 @@ public class EventsFragment extends ListFragment {
 				
 				InputStream stream = new URL(BASE_URL + "/eventos").openStream();
 				Reader jsonReader = new InputStreamReader(stream); 
-				return new GsonBuilder().create().fromJson(jsonReader, EventResult[].class);
+				Gson gson = new GsonBuilder().setDateFormat("yyyy-MM-dd'T'HH:mm:ssz").create();
+				return gson.fromJson(jsonReader, EventResult[].class);
 			} catch (IOException e) {
 				return null;
 			}
