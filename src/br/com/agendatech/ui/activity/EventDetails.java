@@ -6,15 +6,18 @@ import java.util.Date;
 import roboguice.inject.ContentView;
 import roboguice.inject.InjectExtra;
 import roboguice.inject.InjectView;
+import android.app.AlertDialog;
 import android.os.Bundle;
 import android.text.Html;
 import android.text.method.LinkMovementMethod;
 import android.view.View;
+import android.widget.ArrayAdapter;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.TextView;
 import br.com.agendatech.R;
 import br.com.agendatech.model.Event;
+import br.com.agendatech.model.Gadget;
 import br.com.agendatech.ui.ImageLoader;
 
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
@@ -39,7 +42,7 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		state.setText(event.estado);
 		date.setText(makeDateText(event.data, event.data_termino));
 		link.setText(event.site);
-		
+
 		loadLogo();
 
 		for (int i = 0; i < whoIsComing.getChildCount(); i++) {
@@ -69,6 +72,11 @@ public class EventDetails extends RoboSherlockFragmentActivity {
 		} else {
 			new ImageLoader(logo).execute("http://s3.amazonaws.com/agendatech_logos/original/" + event.logo_file_name);
 		}
+	}
+
+	public void showAttendants(View v) {
+		ArrayAdapter<Gadget> gadgetsAdapter = new ArrayAdapter<Gadget>(this, android.R.layout.simple_list_item_1, event.gadgets);
+		new AlertDialog.Builder(this).setAdapter(gadgetsAdapter, null).setTitle(R.string.who_is_coming).show();
 	}
 
 }

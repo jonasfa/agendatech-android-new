@@ -92,6 +92,7 @@
             android:layout_height="wrap_content"
             android:background="?android:selectableItemBackground"
             android:clickable="true"
+            android:onClick="showAttendants"
             android:clipChildren="false"
             android:clipToPadding="false"
             android:orientation="vertical"
