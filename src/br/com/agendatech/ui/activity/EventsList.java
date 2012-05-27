@@ -18,7 +18,7 @@ import com.actionbarsherlock.app.ActionBar.TabListener;
 import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
 
 @ContentView(value = R.layout.main)
-public class Main extends RoboSherlockFragmentActivity {
+public class EventsList extends RoboSherlockFragmentActivity {
 	private TabListener tabListener = new TabListener() {
 		public void onTabUnselected(Tab tab, FragmentTransaction ft) {}
 
