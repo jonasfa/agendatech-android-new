@@ -10,7 +10,8 @@
 
     <application
         android:icon="@drawable/ic_launcher"
-        android:label="@string/agendatech" >
+        android:label="@string/agendatech"
+        android:name=".app.ATApplication" >
         <activity
             android:name=".ui.activity.EventsList"
             android:theme="@style/ATTheme" >
