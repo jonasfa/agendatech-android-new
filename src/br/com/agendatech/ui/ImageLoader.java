@@ -51,6 +51,11 @@ public class ImageLoader extends AsyncTask<Object, Void, Drawable> {
 
 			public void onAnimationCancel(Animator animation) {}
 		});
-		firstAnimation.start();
+
+		try {
+			firstAnimation.start();
+		} catch (Exception e) {
+			logo.setImageDrawable(result);
+		}
 	}
 }

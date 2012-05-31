@@ -96,7 +96,7 @@
             <LinearLayout
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:background="?android:selectableItemBackground"
+                android:background="@drawable/abs__item_background_holo_light"
                 android:clickable="true"
                 android:clipChildren="false"
                 android:clipToPadding="false"
