@@ -20,10 +20,10 @@ import br.com.agendatech.model.Event;
 import br.com.agendatech.model.Gadget;
 import br.com.agendatech.ui.ImageLoader;
 
-import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockFragmentActivity;
+import com.github.rtyley.android.sherlock.roboguice.activity.RoboSherlockActivity;
 
 @ContentView(value = R.layout.event_details)
-public class EventDetails extends RoboSherlockFragmentActivity {
+public class EventDetails extends RoboSherlockActivity {
 	@InjectExtra(value = "event") Event event;
 
 	@InjectView(value = android.R.id.summary) TextView summary;
